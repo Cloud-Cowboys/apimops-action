@@ -11,7 +11,7 @@ This GitHub Action installs the API Management Operations CLI from GitHub Packag
 ## Example usage
 
 ```yaml
-uses: cloud-cowboys/apimops-action@v1
+uses: cloud-cowboys/setup-apimops@v1
 with:
   token: ${{ secrets.NPM_TOKEN }}
 ```
