@@ -8,12 +8,23 @@ This GitHub Action installs the API Management Operations CLI from GitHub Packag
 
 **Required** The token to use for acquiring the NPM package.
 
-## Example usage
+### `version`
 
+The version of the API Management Operations CLI to install. Default is `latest`.
+## Example usage
+To install the latest version:
 ```yaml
 uses: cloud-cowboys/setup-apimops@v1
 with:
   token: ${{ secrets.NPM_TOKEN }}
+```
+
+To install a specific version:
+```yaml
+uses: cloud-cowboys/setup-apimops@v1
+with:
+  token: ${{ secrets.NPM_TOKEN }}
+  version: '1.5.0'
 ```
 
 ## Steps

@@ -4,6 +4,10 @@ inputs:
   token:
     description: 'Token to use for aquiring NPM package'
     required: true
+  version:
+    description: 'Version of the API Management Operations CLI to install'
+    required: false
+    default: 'latest'
 runs:
   using: "composite"
   steps:
@@ -21,7 +25,7 @@ runs:
       shell: bash
 
     - name: Install NPM package
-      run: npm install -g @cloud-cowboys/apimops@latest
+      run: npm install -g @cloud-cowboys/apimops@${{ inputs.version }}
       env:
         NODE_AUTH_TOKEN: ${{ inputs.token }}
       shell: bash
