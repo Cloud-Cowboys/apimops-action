@@ -18,12 +18,15 @@ runs:
         echo "//npm.pkg.github.com/:_authToken=${{ inputs.token }}" > ~/.npmrc
         echo "@cloud-cowboys:registry=https://npm.pkg.github.com" >> ~/.npmrc
         echo "always-auth=true" >> ~/.npmrc
+      shell: bash
 
     - name: Install NPM package
       run: npm install -g @cloud-cowboys/apimops@latest
       env:
         NODE_AUTH_TOKEN: ${{ inputs.token }}
+      shell: bash
 
     - name: Run NPM package
       run: apimops --version
+      shell: bash
 
