@@ -1,0 +1,29 @@
+name: 'Install API Management Operations CLI'
+description: 'Install the API Management Operations CLI from GitHub Packages'
+inputs:
+  token:
+    description: 'Token to use for aquiring NPM package'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@cloud-cowboys'
+
+    - name: Authenticate to GitHub Packages
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+        echo "@cloud-cowboys:registry=https://npm.pkg.github.com" >> ~/.npmrc
+        echo "always-auth=true" >> ~/.npmrc
+
+    - name: Install NPM package
+      run: npm install -g @cloud-cowboys/apimops@latest
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    - name: Run NPM package
+      run: apimops --version
+
