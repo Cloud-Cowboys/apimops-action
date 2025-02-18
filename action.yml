@@ -2,7 +2,7 @@ name: 'Install API Management Operations CLI'
 description: 'Install the API Management Operations CLI from GitHub Packages'
 inputs:
   token:
-    description: 'Token to use for aquiring NPM package'
+    description: 'Token to use for acquiring NPM package'
     required: true
   version:
     description: 'Version of the API Management Operations CLI to install'
